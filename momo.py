@@ -1,9 +1,9 @@
 import pandas as pd
 
-#Paths for all excel files
+#Excel file directory
 momo_path = "C:/Users/Peg/Desktop/mkopa-dlight may june 2019 (1).xlsx"
 
-# A class of momo excel sheets with functions to read each sheet
+#Reading sheets
 class Sheet:
     
     @staticmethod 
@@ -47,26 +47,6 @@ class Sheet:
             return pd.read_excel(momo_path, 'Vodafone DL')
 
 
-   
-## Function to filter for the New Channels in the momo data
-#def filter_NewChannel(sheet):
-#        return sheet.loc[sheet["Channel"] == "NEW"]
-#    
-#
-## Function to filter for the Old Channels in the momo data
-#def filter_OldChannel(sheet):
-#        return sheet.loc[sheet["Channel"] == "OLD"]
-#    
-#def distinct_Account(sheet):
-#       return sheet.AccountNumber.nunique()
-#   
-#def distinct_PerMonth(sheet):
-#       return sheet.groupby(by=['Month']).AccountNumber.nunique()
-
-#   
-##Function to return Number of New Channel Users per Month
-#def channel_Users(sheet):
-#        return distinct_PerMonth(sheet)
 
 def convert_to_datetime(frames):
     #Formatting Date for all
@@ -121,7 +101,7 @@ def excute():
     TigoDL = Sheet.read_TigoDL()
     VodafoneDL = Sheet.read_VodafoneDL()
    
-    #Concatinating all files into one frame
+    #Concatenating all files into one frame
     frames = [MK170,MK3456,MKPOP,VodafoneMK,TigoMK,DL170,DL3456,DLPOP,TigoDL,VodafoneDL]
     
     #Calling to convert frames date to datetime
