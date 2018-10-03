@@ -79,10 +79,10 @@ def customer_class(sheet):
         return(new_customers, old_customers)
  
 def channel_aggregation(ussd,star, pop):
-        ussd = ussd.groupby(by=['AccountNumber','Channel'])['Amount'].agg(['count', 'sum']).reset_index().rename(columns={'count':'Frequency of payment', 'sum':'Sum Paid','Channel':'Payment Method (POP/STAR/USSD)'})
-        pop = pop.groupby(by=['AccountNumber','Channel'])['Amount'].agg(['count', 'sum']).reset_index().rename(columns={'count':'Frequency of payment', 'sum':'Sum Paid','Channel':'Payment Method (POP/STAR/USSD)'})
-        star = star.groupby(by=['AccountNumber','Channel'])['Amount'].agg(['count', 'sum']).reset_index().rename(columns={'count':'Frequency of payment', 'sum':'Sum Paid','Channel':'Payment Method (POP/STAR/USSD)'})
-        frame = [ussd, pop, star]
+        ussd = ussd.groupby(by=['AccountNumber','Channel'])['Amount'].agg(['count', 'sum'])
+        pop = pop.groupby(by=['AccountNumber','Channel'])['Amount'].agg(['count', 'sum'])
+        star = star.groupby(by=['AccountNumber','Channel'])['Amount'].agg(['count', 'sum'])
+        frame = [ussd, pop, star].reset_index().rename(columns={'count':'Frequency of payment', 'sum':'Sum Paid','Channel':'Payment Method (POP/STAR/USSD)'})
         frame = pd.concat(frame, sort=False)
         return frame      
 
